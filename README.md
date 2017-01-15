@@ -11,5 +11,7 @@ Install node.js v0.11.16 when using. Check server.js for possible debug and comm
 
 
 dpailla@fiec.espol.edu.ec 
+
 jcf.qwert@gmail.com
+
 xavi.rguez@gmail.com 
