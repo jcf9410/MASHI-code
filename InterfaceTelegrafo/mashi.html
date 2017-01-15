@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MashiFace by Roboticon</title>
+    <script src='lib/jquery-2.1.1.min.js'></script>
+    <script src='lib/snap.svg-min.js'></script>
+    <style>
+      body {
+        background-color: black;
+      }
+
+      .face {
+        display: block;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <object id="face-container" class="face roboticon" data="assets/images/face_calvin.svg" type="image/svg+xml">
+        <p class="fallback-message">Sorry, something went wrong.</p>
+      </object>
+    </div>
+    <script src="js/roboticon.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('.face').height($(document).height());
+      })
+    </script>
+    <script src="js/roboticon-manual.js"></script>
+  </body>
+</html>

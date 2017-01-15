@@ -1,0 +1,308 @@
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.clearfix {
+    overflow: auto;
+}
+html {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 100%;
+  background: #E3E3E3
+}
+
+/*Global Container*/
+ #container {
+  /* float:left; */
+	position: absolute;
+ 	top: 0px;
+	left:0px;
+    width: 800px; 
+  height: 700px;
+   background: #FFFFFF;
+/*   padding: auto;*/
+  margin: auto; 
+ border: 0.2em solid #1E90FF; /*Verde esperanza #69c773;*/
+    
+}
+/*Frontal Robot Camera -> operator side */
+#remoteVideoFrontal {
+/* 	position: relative;
+	float: left;
+ */	
+	position: absolute;
+	top: 44px;
+	left:-52px;/* -52px; */
+    -webkit-transform: rotate(-90deg);
+	/* transform: rotate(-90deg); */
+	width: 351px;
+	height: 263px;
+ 	border: 0.2em solid #1E90FF;
+}
+#dialogueButton {
+/* 	position: relative;
+	float: left;
+ */	
+ 	display: none;
+	position: absolute;
+	top: 500px;
+	left: 650px;
+	/* transform: rotate(-90deg); */
+	width: 100px;
+	height: 50px;
+ 	border: 0.2em solid #1E90FF;
+}
+
+
+/*Omnidirectional Camera -> operator side*/
+#remoteVideoOmni {
+	position: absolute;
+	top: 0px;
+	left: 650px;
+	width: 468px;
+	height: 263px;
+ 	border: 0.2em solid #1E90FF;
+}
+/*Robot settings*/
+#robotConfig {
+	position: absolute;
+	top: 351px;
+	left:0px;
+	width: 250px;
+	height: 150px;
+ 	border: 0.2em solid #1E90FF;
+}
+
+/*Emergency buttons container*/
+#control  {
+	position: absolute;
+	top: 571px;
+	left:0px;
+	/* width: 200px; */
+	/* height: 100px; */
+ 	border: 0.2em solid #1E90FF;
+}
+/*Tweet menu*/
+#tweet  {
+	position: absolute;
+	top: 150px;
+	left: 250px;
+	width: 400px;
+	/* height: 100px; */
+ 	border: 0.2em solid #1E90FF;
+}
+
+/* Menu Expo */
+#expo {
+	position: absolute;
+	top: 0px;
+	left:250px;
+/* 	width: 400px;
+	height: 80px;
+ */ 	border: 0.2em solid #1E90FF;
+ }
+
+#navidadSounds {
+	position: absolute;
+	top: 80px;
+	left:250px;	
+/* 	width: 400px;
+	height: 60px;
+ */ 	border: 0.2em solid #1E90FF;
+ }
+#timer {
+	position: absolute;
+	top: 160px;
+	left:250px;	
+/* 	width: 400px;
+	height: 60px;
+ */ 	border: 0.2em solid #1E90FF;
+ }
+ 
+/*Menu Container Emotions/Operator*/
+#display {
+	position: absolute;
+	top: 351px;
+	left:250px;
+	width: 300px;
+	height: 150px;
+ 	border: 0.2em solid #1E90FF;
+ }
+
+ /*Roboticon/Operator face*/
+#localVideoPanel {
+	position: absolute;
+	top: 351px;
+	left:550px;
+	width: 150px;
+	height: 150px;
+ 	border: 0.2em solid #1E90FF;
+ }
+
+/*TTS: Text to speech*/
+#voice {
+	/* display: none; */
+	position: absolute;
+	top: 250px;
+	left:250px;
+	height: 100px;
+	width: 600px;
+	border: 0.2em solid #1E90FF;
+}
+
+/*Audio*/
+#sound {
+	position: absolute;
+	top: 501px;
+	left:0px;
+	/* height: 100px; */
+ 	border: 0.2em solid #1E90FF;
+}
+
+
+#msgContainer {
+	/*display: none;*/
+	position: absolute;
+	top: 650px;
+	left:0px;
+	margin:0.0em;
+/* 	width: 600px;
+	height: 50px;
+ */  padding: 0.1em;
+  font-size: 2em;
+ 	border: 0.2em solid #1E90FF;
+}
+
+#robotIcon {
+  display: none;
+  margin: auto;
+  width:100px;
+}
+#menuMessage {
+	display: block;
+	text-align: center;
+	font-size: 0.75rem;
+}
+.LOGOS {
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-left: 30px;
+  margin-right: 0px;
+}
+.EFECTOS {
+  position: absolute;
+  left: 910px;
+  top: 170px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 100px;
+}
+
+/*TTS message box*/
+#dataChannelSend {
+/*   margin-top: 5px;
+  margin-right: auto;
+  margin-bottom: 0px;*/
+  margin-left: 10px;
+  width: 400px;
+  padding: 0.1em;
+  font-size: 1em;
+}
+
+/* #sendButton {
+  width: 50px;
+  height: 30px;
+  margin-top: 25px;
+  background: #E3E3E3;
+  border-bottom: 1px solid #E3E3E3;
+}
+ */
+#intensity {
+  width: 100px;
+  margin-left: 0px;
+}
+#intensityLabel {
+	  color: #E3E3E3;
+}
+ button {
+  display: inline-block;
+  border-radius: 3px;
+  border: none;
+  font-size: 1rem;
+  background: #1E90FF;
+  border-bottom: 1px solid #E3E3E3;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  font-weight: bold;
+  margin: 1px;
+  width: 80px;
+  height: 30px;
+  text-align: center;
+  
+  }
+
+
+.emotionButton {
+  display: inline-block;
+  border-radius: 3px;
+  border: none;
+  font-size: 1rem;
+  background: #E3E3E3;
+  border-bottom: 1px solid #E3E3E3;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  font-weight: bold;
+  margin: 1px;
+   width: 50px;
+  /*height: 50px;
+ */  text-align: center;
+}
+
+ 
+.controlButton {
+  display: inline-block;
+  border-radius: 3px;
+  border: none;
+  font-size: 1rem;
+  background: #1E90FF;
+  border-bottom: 1px solid #7d7d7d;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  font-weight: bold;
+  margin: 1px;
+/*   width: 50px;
+  height: 50px;
+ */  text-align: center;
+}
+
+table.emotions {
+  margin-bottom: 5px;
+}
+
+#msg {
+  font-size: 0.9em;
+  line-height: 1.0em;
+}
+#msg.not-supported strong {
+  color: #CC0000;
+}
+input[type="range"] {
+  width: 100px;
+}
+.option {
+  margin: 1em 0;
+}
+button:hover,button:focus {
+  opacity: 0.75;
+  cursor: pointer;
+}
+button:active {
+  opacity: 1;
+  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1) inset;
+}
+
+ .hidden {
+  display: none;
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	  <!--  <meta charset="utf-8">
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+	  <meta name='keywords' content='WebRTC, HTML5, JavaScript' />
+	  <meta name='description' content='WebRTC Reference App' />
+	  <meta name='viewport' content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1'>
+	  <base target='_blank'>
+	  <title>Robot</title>
+	  <link rel='stylesheet'  type="text/css" href='css/mainRobot.css' />
+	  <script src="lib/jquery-2.1.1.min.js"></script>
+	  <script src="lib/snap.svg-min.js"></script>
+</head>
+
+<body>
+	<div id='container'>
+		<div id='local'>
+			<h3>Robot side view</h3>
+			<video id='localVideo' controls muted></video>
+			<!-- Camera OmniDirectional -->
+			<video id='localVideo2' controls muted></video>
+		</div>
+
+
+		<div id='remote'>
+			<h3>Operator side view</h3>
+			<!-- <video width="500" height="300" controls id='remoteVideo' autoplay></video> -->
+			<video id='remoteVideo' controls autoplay></video>
+		</div>
+		<!-- <div id="display-mode-message"> -->
+<!-- 			<p>
+			Toggle between display modes by pressing <code>"T"</code> or by selecting the correct mode on the operator interface.
+			</p>
+		</div>
+ -->
+		<div id='sendReceive'>
+			<div id='receive'>
+				<h3>Rx data</h3>
+				<textarea id="dataChannelReceive" disabled></textarea>
+			</div>
+			<div id='send'>
+				<h3>Tx Data</h3>
+				<textarea id="dataChannelSend" disabled></textarea>
+			</div>
+			<div id='hidden'>
+				<button id="sendButton">Send</button>		
+			</div>			
+		</div>
+
+		<div id='voiceConfig'>
+			<h3>Voice configuration</h3>
+			<p id="msg"></p>
+			<div class="option">
+				<label for="voice">Voice</label>
+				<select name="voice" id="voice"></select>
+			</div>
+			<div class="option">
+				<label for="volume">Volumen</label>
+				<input type="range" min="0" max="1" step="0.1" name="volume" id="volume" value="1">
+			</div>
+			<div class="option">
+				<label for="rate">Rate</label>
+				<input type="range" min="0.1" max="10" step="0.1" name="rate" id="rate" value="0.8">
+			</div>
+			<div class="option">
+				<label for="pitch">Pitch</label>
+				<input type="range" min="0" max="2" step="0.1" name="pitch" id="pitch" value="1">
+			</div>
+			<button id="configSpeak">Set</button>
+		</div>
+	</div>
+	<div id="container-fullscreen-video" class="fullscreen-container">
+	</div>
+	<div id="container-fullscreen-roboticon" class="fullscreen-container">
+		<object id="face-container" class="face roboticon" data="assets/images/face_calvin_01.svg" type="image/svg+xml">
+			<p class="fallback-message">Sorry, something went wrong.</p>
+		</object>
+	</div>
+
+
+
+<!--script src='/socket.io/socket.io.js'></!--script-->
+<!--script src='http://localhost:2013/node_modules\socket.io\node_modules\socket.io-client\dist/socket.io.js'></!--script-->
+<!--script src='http://10.0.0.201:2013/node_modules\socket.io\node_modules\socket.io-client\dist/socket.io.js'></!--script-->
+<!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> -->
+	<script src='node_modules\socket.io\node_modules\socket.io-client\dist\socket.io.js'></script>
+	<script src='lib/adapter.js'></script>
+	<script src='js/speech.js'></script>
+	<script src='js/mainRobot.js'></script>
+	<script src="js/toggleFullscreen.js"></script>
+	<script src="js/roboticon.js"></script>
+
+
+</body>
+</html>

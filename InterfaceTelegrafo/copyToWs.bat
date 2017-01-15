@@ -1,0 +1,1 @@
+xcopy /s /i /y "C:\Users\dpAsus\Dropbox\Mashi 2.01\Sistemas\Programacion\Desarrollo\InterfaceTelegrafo"  "C:\Users\dpAsus\Dropbox\Mashi 2.01\Sistemas\Programacion\Desarrollo\ws" 

@@ -1,0 +1,20 @@
+{
+  "name": "RobotIcon",
+  "version": "1.0.0",
+  "description": "Providing the telepresence and -operated robot 'MASHI' with a face that can express emotions",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.1.0",
+    "keypress": "^0.2.1",
+    "node-static": "^0.7.3",
+    "serialport": "^1.4.0",
+    "socket.io": "^0.9.16"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Dennys Fabian Paillacho Chiluiza, Lukáš Danev, Nicolas Fricke, Marten Hamann, Tobias Hollarek",
+  "license": "MIT"
+}

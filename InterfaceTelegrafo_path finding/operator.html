@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name='keywords' content='WebRTC, HTML5, JavaScript' />
+	<meta name='description' content='WebRTC Reference App' />
+	<meta name='viewport' content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1'>
+<!-- 	
+	<script src='https://code.jquery.com/jquery-2.1.1.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.3.0/snap.svg-min.js'></script>
+ -->
+	<script src='lib/jquery-2.1.1.min.js'></script>
+	<script src='lib/snap.svg-min.js'></script>
+
+	<base target='_blank'>
+	<title>Operator</title>
+	<link rel='stylesheet' type="text/css" href='css/mainOperator.css' />
+</head>
+
+<body>
+	<div id='container'>
+		<div id='communicationPanel'>
+			<!-- <video id='remoteVideoOmni' class="hidden" controls autoplay ></video>  -->
+			<video id='remoteVideoFrontal' controls autoplay muted></video>
+ 			<video id='remoteVideoOmni' controls autoplay ></video>
+ 		</div>
+		<button id="dialogueButton">Mensaje</button>
+		<div id='robotConfig'>
+			<table>
+				<tr>
+					<th><label for="robotVol" id="robotVolLabel">Op. Vol:
+					<input id="robotVol" type="range" min="0" max="100" value="0" oninput="robotVol.changeVolume(this);" /></label></th>
+					<!-- <th><button id="configRobotVol">Set</button></th> -->
+				</tr>
+				<tr>	
+					<th><label for="robotVelocityGain" id="velocityGainLabel">Vel. gain:
+					<input id="robotVelocityGain" type="range" name="robotVelocityGain" min="0" max="0.5" step="0.1" value="0.2"></label></th> 
+				</tr>   
+				<tr>	
+					<th><label for="socialMode" id="socialModeLabel">Social Mot.:
+					<input id="socialModeOff" name="socialMode" type="radio"  value="off" checked> Off
+					<input id="socialModeOn" name="socialMode" type="radio"  value="on"> On</label></th> 
+				</tr>   				
+				<tr>	
+					<th><label for="pidMode" id="pidModeLabel">PID:
+					<input id="pidConservative" name="pidMode" type="radio"  value="on" checked> Cons.
+					<input id="pidAggresive" name="pidMode" type="radio"  value="off"> Aggr.</label></th> 
+				</tr>   				
+				<tr>	
+					<th><label for="flagEvent" id="flagEventLabel">Evento:
+					<input id="flagEvent" name="flagEvent" type="checkbox"> </label></th>
+				</tr>   				
+			</table>
+		</div>
+		
+		<div id='control'>
+			<table>
+				<tr>
+					<th>Base</th>
+					<th><button id="baseStop">Stop!</button></th>
+					<th><button id="baseRearm">Rearm</button></th>
+				</tr>   
+				<tr>
+					<th>Head</th>
+					<th><button id="headRest">Stop!</button></th>
+					<th><button id="headWake">Rearm</button></th>
+				</tr>   
+			</table>	
+		</div>
+		<div id='expo'>
+			<form>
+			  <select id="modeInicio">
+				<option value="">Greetings</option>
+				<option value="Hello">Hello</option>
+				<option value="Good Morning">Good Morning</option>
+				<option value="Good Afternoon">Good Afternoon</option>
+				<option value="Good Night">Good Night</option>
+				<option value="My name is Mashi">My name is Mashi</option>	
+				<option value="m a s h i">m a s h i</option>	
+				<option value="multipurpose assistance robot for social human interaction">Who am I</option>	
+				<option value="and I will be your exhibition guide">and I will be your exhibition guide</option>	
+				<option value="Do you want to know more about the city?">Do you want to know more about the city?</option>	
+				<option value="Great!">Great!</option>
+				<option value="Okay, let's start">Okay, let's start</option>
+				<option value="See you soon!">See you soon!</option>
+				<option value="Bye bye!">Bye bye</option>			
+				<option value="Goodbye!">Goodbye!</option>			
+				<option value="Goodbye!">Goodbye!</option>
+				<option value="Do you want me to take a selfie with you?">Selfie</option>
+			  </select>
+			  <select id="modeDesarrollo">
+				<option value="">Development</option>
+				<option value="Welcome to l'Hospitalet">Welcome to l'Hospitalet</option>
+				<option value="Centro de Investigación, Desarrollo e Innovación de Sistemas computacionales">Cidis significado</option>
+				<option value="El CIDIS – Centro de Investigación, Desarrollo e Innovación de Sistemas computacionales – es un centro de I+D+i  que realiza investigación científica y tecnológica orientada a resolver problemas específicos dentro de sus campos de aplicación en: agricultura, manufactura, transporte, telecomunicaciones y construcciones inteligentes; desarrollando sistemas que integran Hardware y Software.">Cidis descripcion</option>
+				<option value="Torre Barrina is a multimedia centre open to creation, entrepeneurship, and learning">Torre Barrina</option>
+				<option value="Escola Santiago Ramon y Cajal started in 2009 and it is composed of 2 buildings and lots of educative activities">Escola Santiago Ramon y Cajal</option>
+				<option value="Centre d'art Tecla Sala is a municipal centre which encourages art and contemporary thinking">Centre d'art Tecla Sala</option>
+				<option value="The town hall started its contruction in 1894, in the urban reorganisation of the city">Ajuntament de l'Hospitalet</option>
+				<option value="In La Farga you can found whatever you want for your friends and family">La Farga</option>
+				<option value="The Hospital is one of the 20 best hospitals in Spain">Hospital de Bellvitge</option>
+				<option value="The church of Santa Maria de Bellvitge was known for first time in 1279 but it was constructed before">Santa Maria de Bellvitge</option>
+				<option value="Centre Cultural La Bobila is a 4 floor building with some photografic laboratories and adapted spaces for every kind of activity">Centre Cultural La Bobila</option>
+				<option value="These letters of the miniature are one of the last works of the catalan artist Joan Brossa, and one of the most influencer monuments of the city">Lletres Joan Brossa</option>
+				<option value="Thank you for your attention">Thank you for your attention</option>			
+				<option value="Hasta pronto">Hasta pronto</option>			
+			</select>
+			  <select id="modeFrase">
+				<option value="">Short phrases</option>
+				<option value="Have a nice Congress!">Have a nice Congress!</option>
+				<option value="Great!">Great!</option>
+				<option value="Fantastic">Fantastic!</option>
+				<option value="Yes">Yes</option>
+				<option value="Thanks!">Thanks!</option>				
+				<option value="Very good!">Very good!</option>			
+				<option value="I'm okay, thanks. And you?">I'm okay, thanks. And you?"</option>				
+				<option value="Nice to meet you!">Nice to meet you!</option>	
+				<option value="I'm a robot">I'm a robot</option>				
+				<option value="No">No</option>				
+				<option value="I don't know">I don't know</option>
+				<option value="Maybe">Maybe</option>				
+				<option value="I didn't understand, can you repeat that please?">I didn't understand, can you repeat that please?</option>
+				<option value="I'm sorry">I'm</option>
+				<option value="Wait a moment, please!">Wait a moment, please!</option>				
+				<option value="Excuse me, thank you!">Excuse me, thank you!</option>				
+				<option value="Be careful, please!">Be careful, please!</option>				
+			  </select>
+			</form>
+		</div>	
+		<div id='display'>
+			<!-- <h3>Display</h3> -->
+			<form>
+			  <select id="modeSelector">
+				<option value="Emotions">Emotions</option>
+				<option value="Operator">Operator</option>
+				<option value="Menu" selected>Menu</option>
+			  </select>
+			  <select id="roboticonModeSelect" class="roboticonModeSelect" hidden>
+				<option value="whole_face">Whole Face</option>
+				<option value="eyes_mouth">Eyes Mouth</option>
+<!-- 				<option value="eyes_only">Eyes Only</option> -->
+			  </select>
+			</form>
+			<table class="emotions">
+			  <tr>
+				<th>
+				  <button class="emotionButton" id="happyButton" disabled>Happy</button>
+				</th>
+				<th>
+				  <button class="emotionButton" id="sadButton" disabled>Sad</button>
+				</th>
+				<th>
+				  <button class="emotionButton" id="angryButton" disabled>Angry</button>
+				</th>
+			  </tr>
+			  <tr>
+				<th>
+				  <button class="emotionButton" id="uncertainButton" disabled>Uncertain</button>
+				</th>
+				<th>
+				  <button class="emotionButton" id="neutralButton" disabled>Neutral</button>
+				</th>
+				<th>
+				  <button class="emotionButton" id="sleepyButton" disabled>Sleepy</button>
+				</th>
+				<th>
+			<label for="intensity" id="intensityLabel">
+ 			  Intensity: 
+			  <input id="intensity" type="range" name="points" min="0" max="100" disabled>
+			</label>
+				</th>
+			  </tr>
+			</table>
+		</div>	
+		<div id='navidadSounds'>
+			<table>
+				<tr>
+					<th><button id="lego">Lego</button></th>
+					<th><button id="christmas01">01</button></th>
+				</tr>    
+				<tr>
+					<th><button id="christmas02">02</button></th>
+					<th><button id="christmas03">03</button></th>
+					<th><button id="christmas04">04</button></th>
+				</tr>   
+			</table>	
+		</div>		
+		<div id='timer'>
+			<table>
+				<tr>
+					<th><button id="stopTimerButton">Timer01</button></th>
+				</tr>    
+			</table>	
+		</div>		
+		
+		<div id='localVideoPanel'>
+			<p id="menuMessage" hidden>Robot display</p>
+			<object id="robotIcon" class="roboticon svgContainer" data="assets/images/face_calvin_01.svg" type="image/svg+xml" hidden>
+			<p class="fallback-message">Sorry, something went wrong – does your browser support SVG? Try using Google Chrome.</p>
+			</object>
+			<video id='localVideo' autoplay hidden muted></video>
+		</div>
+		
+		<div id='voice'>
+			<form>
+			  <label for="ttsCheckbox">
+				<input type="checkbox" id="ttsCheckbox" value="yes" unchecked>
+				TTS
+			  </label>
+			</form>
+  			<input id="dataChannelSend" type="text" name="dataChannelSend" disabled>
+			<button id="sendTtsButton" title="You can press ENTER key to send message" disabled>Send</button>
+		</div>
+		
+		<div id='sound'>
+			<p>Audio<button id="loadSounds">Load</button>
+			<select name="soundList" id="soundList"></select>
+			<input type="button" onclick="VolumeSample.toggle();" value="Play/Stop"/>
+			Volume: <input type="range" min="0" max="100" value="100" oninput="VolumeSample.changeVolume(this);" /></p>
+
+		</div>
+		<div id='msgContainer'>
+				<input id="msgTxt" name="msgTxt" type="text"  disabled>
+		</div>		
+		
+ 		<div id='tweet'>
+			<button id="startbutton" >Take photo</button>
+			<button id="twitterButton">Twitter</button>
+			<canvas id="canvas" hidden>
+			</canvas>
+			<div class="output">
+				<img id="photo" alt="The screen capture will appear in this box.">
+			</div>
+		</div>
+ 
+  		
+	</div>
+
+	<script src='node_modules\socket.io\node_modules\socket.io-client\dist/socket.io.js'></script>
+	<script src='lib/adapter.js'></script>
+	<script src='js/mainOperator.js'></script>
+	<script src="js/roboticon.js"></script>
+ 	<script src='js/twitterOperator.js'></script>
+	<script src='js/takePicture.js'></script>
+	<script src='js/navidad.js'></script>  	
+</body>
+</html>

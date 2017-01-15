@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name='keywords' content='WebRTC, HTML5, JavaScript' />
+	<meta name='description' content='WebRTC Reference App' />
+	<meta name='viewport' content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1'>
+<!-- 	
+	<script src='https://code.jquery.com/jquery-2.1.1.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.3.0/snap.svg-min.js'></script>
+ -->
+	<script src='lib/jquery-2.1.1.min.js'></script>
+	<script src='lib/snap.svg-min.js'></script>
+
+	<base target='_blank'>
+	<title>Operator</title>
+	<link rel='stylesheet' type="text/css" href='css/mainOperator.css' />
+</head>
+
+<body>
+	<div id='container'>
+		<div id='communicationPanel'>
+			<!-- <video id='remoteVideoOmni' class="hidden" controls autoplay ></video>  -->
+			<video id='remoteVideoFrontal' controls autoplay muted></video>
+<!-- 			<video id='remoteVideoOmni' controls autoplay ></video> -->
+ 		</div>
+		<button id="dialogueButton">Mensaje</button>
+		<div id='robotConfig'>
+			<table>
+				<tr>
+					<th><label for="robotVol" id="robotVolLabel">Op. Vol:
+					<input id="robotVol" type="range" min="0" max="100" value="0" oninput="robotVol.changeVolume(this);" /></label></th>
+					<!-- <th><button id="configRobotVol">Set</button></th> -->
+				</tr>
+				<tr>	
+					<th><label for="robotVelocityGain" id="velocityGainLabel">Vel. gain:
+					<input id="robotVelocityGain" type="range" name="robotVelocityGain" min="0" max="0.5" step="0.1" value="0.2"></label></th> 
+				</tr>   
+				<tr>	
+					<th><label for="socialMode" id="socialModeLabel">Social Mot.:
+					<input id="socialModeOff" name="socialMode" type="radio"  value="off" checked> Off
+					<input id="socialModeOn" name="socialMode" type="radio"  value="on"> On</label></th> 
+				</tr>   				
+				<tr>	
+					<th><label for="pidMode" id="pidModeLabel">PID:
+					<input id="pidConservative" name="pidMode" type="radio"  value="on" checked> Cons.
+					<input id="pidAggresive" name="pidMode" type="radio"  value="off"> Aggr.</label></th> 
+				</tr>   				
+				<tr>	
+					<th><label for="flagEvent" id="flagEventLabel">Evento:
+					<input id="flagEvent" name="flagEvent" type="checkbox"> </label></th>
+				</tr>   				
+			</table>
+		</div>
+		
+		<div id='control'>
+			<table>
+				<tr>
+					<th>Base</th>
+					<th><button id="baseStop">Stop!</button></th>
+					<th><button id="baseRearm">Rearm</button></th>
+				</tr>   
+				<tr>
+					<th>Head</th>
+					<th><button id="headRest">Stop!</button></th>
+					<th><button id="headWake">Rearm</button></th>
+				</tr>   
+			</table>	
+		</div>
+		<div id='expo'>
+			<form>
+			  <select id="modeInicio">
+				<option value="">Saludo</option>
+				<option value="Hola">Hola</option>
+				<option value="Buenos días">Buenos días</option>
+				<option value="Buenas tardes">Buenos tardes</option>
+				<option value="Buenas noches">Buenas noches</option>
+				<option value="Me llamo Masshi">Me llamo Mashi</option>	
+				<option value="m a s h i">m a s h i</option>	
+				<option value="robot de asistencia multipropósito para la interacción social humano robot">Quien soy</option>	
+				<option value="y seré su gúia de exhibición">y seré su gúia de exhibición</option>	
+				<option value="¿Desean conocer más acerca del CIDIS?">¿Desean conocer más acerca del CIDIS?</option>	
+				<option value="Genial!">Genial!</option>
+				<option value="De acuerdo, empezamos">De acuerdo, empezamos</option>
+				<option value="Hasta pronto">Hasta pronto</option>
+				<option value="Nos vemos">Nos vemos</option>			
+				<option value="Chau!">Chau!</option>			
+				
+			  </select>
+			  <select id="modeDesarrollo">
+				<option value="">Desarrollo</option>
+				<option value="Bienvenidos al CIDIS">Bienvenidos al CIDIS</option>
+				<option value="Centro de Investigación, Desarrollo e Innovación de Sistemas computacionales">Cidis significado</option>
+				<option value="El CIDIS – Centro de Investigación, Desarrollo e Innovación de Sistemas computacionales – es un centro de I+D+i  que realiza investigación científica y tecnológica orientada a resolver problemas específicos dentro de sus campos de aplicación en: agricultura, manufactura, transporte, telecomunicaciones y construcciones inteligentes; desarrollando sistemas que integran Hardware y Software.">Cidis descripcion</option>
+				<option value="Los productos y servicios del CIDIS son soluciones innovadoras que contribuyen al desarrollo tecnológico del sector industrial, gobierno y de la sociedad en general, dentro de áreas del conocimiento que involucran: Visión por Computador, Sistemas Autónomos, Eficiencia Energética, Comunicaciones Móviles y Sistemas Embebidos.">Cidis Productos</option>
+				<option value="Muchas gracias por su atención!">Muchas gracias por su atención</option>			
+				<option value="Hasta pronto">Hasta pronto</option>			
+			</select>
+			  <select id="modeFrase">
+				<option value="frase">Frase</option>
+				<option value="Felices fiestas!">Felices fiestas!</option>
+				<option value="Genial">Genial</option>
+				<option value="Fantástico">Fantastico!</option>
+				<option value="Sí">Sí</option>
+				<option value="Muchas gracias">Muchas gracias</option>				
+				<option value="Muy bien!">Muy bien!</option>			
+				<option value="Muy bien, gracias, y tu?">Muy bien, gracias, y tu?"</option>				
+				<option value="Encantado en conocerte!">Encantado en conocerte!</option>	
+				<option value="Soy un robot">Soy un robot</option>				
+				<option value="no">No</option>				
+				<option value="No lo se">No lo se</option>
+				<option value="Tal vez">Tal vez</option>				
+				<option value="No entendí, me lo puedes repetir?">No entendí, me lo puedes repetir?</option>
+				<option value="Lo siento">Lo siento</option>
+				<option value="Un momento por favor!">Un momento por favor!</option>				
+				<option value="permiso, muchas gracias!">permiso, muchas gracias!</option>				
+				<option value="con cuidado, por favor!">con cuidado, por favor!</option>				
+			  </select>
+			</form>
+		</div>	
+		<div id='display'>
+			<!-- <h3>Display</h3> -->
+			<form>
+			  <select id="modeSelector">
+				<option value="Emotions">Emotions</option>
+				<option value="Operator">Operator</option>
+				<option value="Menu" selected>Menu</option>
+			  </select>
+			  <select id="roboticonModeSelect" class="roboticonModeSelect" hidden>
+				<option value="whole_face">Whole Face</option>
+				<option value="eyes_mouth">Eyes Mouth</option>
+<!-- 				<option value="eyes_only">Eyes Only</option> -->
+			  </select>
+			</form>
+			<table class="emotions">
+			  <tr>
+				<th>
+				  <button class="emotionButton" id="happyButton" disabled>Happy</button>
+				</th>
+				<th>
+				  <button class="emotionButton" id="sadButton" disabled>Sad</button>
+				</th>
+				<th>
+				  <button class="emotionButton" id="angryButton" disabled>Angry</button>
+				</th>
+			  </tr>
+			  <tr>
+				<th>
+				  <button class="emotionButton" id="uncertainButton" disabled>Uncertain</button>
+				</th>
+				<th>
+				  <button class="emotionButton" id="neutralButton" disabled>Neutral</button>
+				</th>
+				<th>
+				  <button class="emotionButton" id="sleepyButton" disabled>Sleepy</button>
+				</th>
+				<th>
+			<label for="intensity" id="intensityLabel">
+ 			  Intensity: 
+			  <input id="intensity" type="range" name="points" min="0" max="100" disabled>
+			</label>
+				</th>
+			  </tr>
+			</table>
+		</div>	
+		<div id='navidadSounds'>
+			<table>
+				<tr>
+					<th><button id="lego">Lego</button></th>
+					<th><button id="christmas01">01</button></th>
+				</tr>    
+				<tr>
+					<th><button id="christmas02">02</button></th>
+					<th><button id="christmas03">03</button></th>
+					<th><button id="christmas04">04</button></th>
+				</tr>   
+			</table>	
+		</div>		
+		<div id='timer'>
+			<table>
+				<tr>
+					<th><button id="stopTimerButton">Timer01</button></th>
+				</tr>    
+			</table>	
+		</div>		
+		
+		<div id='localVideoPanel'>
+			<p id="menuMessage" hidden>Robot display</p>
+			<object id="robotIcon" class="roboticon svgContainer" data="assets/images/face_calvin_01.svg" type="image/svg+xml" hidden>
+			<p class="fallback-message">Sorry, something went wrong – does your browser support SVG? Try using Google Chrome.</p>
+			</object>
+			<video id='localVideo' autoplay hidden muted></video>
+		</div>
+		
+		<div id='voice'>
+			<form>
+			  <label for="ttsCheckbox">
+				<input type="checkbox" id="ttsCheckbox" value="yes" unchecked>
+				TTS
+			  </label>
+			</form>
+  			<input id="dataChannelSend" type="text" name="dataChannelSend" disabled>
+			<button id="sendTtsButton" title="You can press ENTER key to send message" disabled>Send</button>
+		</div>
+		
+		<div id='sound'>
+			<p>Audio<button id="loadSounds">Load</button>
+			<select name="soundList" id="soundList"></select>
+			<input type="button" onclick="VolumeSample.toggle();" value="Play/Stop"/>
+			Volume: <input type="range" min="0" max="100" value="100" oninput="VolumeSample.changeVolume(this);" /></p>
+
+		</div>
+		<div id='msgContainer'>
+				<input id="msgTxt" name="msgTxt" type="text"  disabled>
+		</div>		
+		
+<!-- 		<div id='tweet'>
+			<button id="startbutton" >Take photo</button>
+			<button id="twitterButton">Twitter</button>
+			<canvas id="canvas" hidden>
+			</canvas>
+			<div class="output">
+				<img id="photo" alt="The screen capture will appear in this box.">
+			</div>
+		</div>
+ -->
+  		
+	</div>
+
+	<script src='node_modules\socket.io\node_modules\socket.io-client\dist/socket.io.js'></script>
+	<script src='lib/adapter.js'></script>
+	<script src='js/mainOperator.js'></script>
+	<script src="js/roboticon.js"></script>
+<!-- 	<script src='js/tweeterOperator.js'></script> -->
+	<script src='js/takePicture.js'></script>
+	<script src='js/navidad.js'></script>  	
+</body>
+</html>
