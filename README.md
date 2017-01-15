@@ -13,17 +13,29 @@ BE SURE TO INSTALL NODE.JS PACKAGES!!
 Use npm - install (package)
 
 Required packages:
+
   -pathfinding
+  
   -bezier
+  
   -xlsx
+  
   -twitter
+  
   -atob
+  
   -serialport
+  
   -fs
+  
   -express
+  
   -http
+  
   -https
+  
   -socket.io
+  
   -keypress
 
 Feel free to contact:
